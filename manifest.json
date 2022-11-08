@@ -1,0 +1,35 @@
+{
+    "name": "autobet bw",
+    "description": "Betway auto bet chrome extension",
+    "version": "0.0.1",
+    "manifest_version": 3,
+    "icons": {
+        "16": "./images/icon16.png",
+        "48": "./images/icon48.png",
+        "128": "./images/icon128.png"
+    },
+    "background": {
+        "service_worker": "./background.js"
+    },
+    "options_page": "./options.html",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://www.betway.co.za/lobby/betgames/launchgame/betgames/Betgames/Wheel%20of%20fortune%20new?launchUrlText=%5bplay+for+real%5d",
+        "https://webiframe.betgames.tv/"
+    ],
+    "content_scripts": [
+        {
+            "js": ["worker.js"],
+            "matches": [
+                "https://webiframe.betgames.tv/"
+            ]
+        }
+    ]
+}
+
